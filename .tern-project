@@ -1,0 +1,17 @@
+{
+    "ecmaVersion": 7,
+    "libs": [
+        "browser",
+        "jquery",
+        "ecma5",
+        "ecma6"
+    ],
+	"loadEagerly": [
+		"src/*.js"
+	],
+	"dontLoad": [
+		
+	],
+	"plugins": {
+	}
+}
