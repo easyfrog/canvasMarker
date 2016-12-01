@@ -3,6 +3,7 @@ Base html5 canvas to draw markers by JSON configure
 
 ``` javascript
 var imageData = {
+    width: 100,
     height: 150,
     background: {
         color: 0x00fff0,
@@ -106,13 +107,15 @@ var imageData = {
 var marker = new Marker( imageData );
 
 // 绘制完成后, 加入网页中.
-marker.drawComplete = function () {
+marker.callback = function () {
     // clear the callback
-    marker.drawComplete = null;
+    marker.callback = null;
 
     // add to document
     document.body.appendChild(marker.ctx.canvas);
 }
+
+marker.init();
 
 ```
 
