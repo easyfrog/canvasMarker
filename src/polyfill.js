@@ -14,11 +14,3 @@ if (!CanvasRenderingContext2D.prototype.roundRect) {
 	 }
 }
 
-/**
- * clone json
- */
-if (!JSON.clone) {
-	JSON.clone = function (json) {
-		return JSON.parse(JSON.stringify(json));
-	}
-}

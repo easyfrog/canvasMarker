@@ -1,5 +1,5 @@
 /**
- * EasyDraw class
+ * Marker class
  *
  * style: {
  * 		width: 256, 
@@ -112,8 +112,8 @@ function Marker(params) {
 
 	s._elements = [];
 
-	// first draw
-	s.update(null, true);
+	s.ctx.canvas.width = s.style.width;
+	s.ctx.canvas.height = s.style.height;
 }
 
 Marker.prototype =  {
@@ -280,11 +280,13 @@ Marker.prototype =  {
 		var w = s.getValue(data, 'width', true);
 		var h = s.getValue(data, 'height');
 
+		s.ctx.beginPath();
 		if (isRound) {
 			s.ctx.roundRect(x, y, w, h, (data.radius || 5));
 		} else {
 			s.ctx.rect(x, y, w, h);
 		}
+		s.ctx.closePath();
 
 		if (data.lineWidth != undefined && data.strokeColor != undefined) {
 			s.ctx.stroke();
@@ -486,10 +488,14 @@ Marker.prototype =  {
 			s.isDrawing = false;
 
 			// 调用绘制完成后的回调函数
-			if (s.drawComplete) {
-				s.drawComplete();
+			if (s.callback) {
+				s.callback();
 			}
 		}
+	},
+
+	init: function () {
+		this.update(null, true);
 	},
 
 	update: function (params, needNormalize) {
@@ -512,8 +518,13 @@ Marker.prototype =  {
 		var w = s.style.width;
 		var h = s.style.height;
 
-		s.ctx.canvas.width = w;
-		s.ctx.canvas.height = h;
+		if (w != s.ctx.canvas.width) {
+			s.ctx.canvas.width = w;
+		}
+
+		if (h != s.ctx.canvas.height) {
+			s.ctx.canvas.height = h;
+		}
 
 		// clear first
 		s.ctx.clearRect(0, 0, w, h);

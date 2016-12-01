@@ -9,7 +9,8 @@
 <body>
 	<script>
 		var imageData = {
-			height: 150,
+			width: 450,
+			height: 250,
 			background: {
 				color: 0x00fff0,
 				alpha: .3
@@ -61,8 +62,8 @@
 						{
 							type: 'text',
 							name: 'text',
-							text: 'jalkjsdfkja战罢是拉萨是虽',
-							font: '24px Arial',
+							text: 'jalkjs战罢是拉萨是虽',
+							font: '44px Arial',
 							color: 0xff0000,
 							strokeColor: 0xfffff0,
 							lineWidth: 3,
@@ -127,14 +128,17 @@
 		// 创建Marker
 		var marker = new Marker( imageData );
 
-		// 绘制完成后, 加入网页中.
-		marker.drawComplete = function () {
+		marker.callback = function () {
 			// clear the callback
-			marker.drawComplete = null;
+			marker.callback = null;
+			console.log('complete!!!');
 
 			document.body.appendChild(marker.ctx.canvas);
 			animate();
 		}
+
+		// 初始画
+		marker.init();
 
 		// hand data
 		var group = marker.getStyleByName('group1');
