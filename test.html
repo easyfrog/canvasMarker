@@ -134,28 +134,33 @@
 			console.log('complete!!!');
 
 			document.body.appendChild(marker.ctx.canvas);
-			animate();
+			// animate();
+
+			// hand data
+			var group = marker.getStyleByName('group1');
+			var circle = marker.getStyleByName('cir');
+
+			var _x = group.x;
+			var rad = circle.radius;
+
+			var now = 0;
+			anim = new animation(function(delta) {
+				now += delta;
+				group.x = _x + Math.abs(Math.sin(now)) * 60;
+				circle.radius = rad + Math.abs(Math.cos(now)) * 30;
+				marker.update();
+			}, 30);
+
+			anim.play();
 		}
+
+		// marker.ctx.canvas.addEventListener('mousedown', function (event) {
+		// 	console.log(event);
+		// });
 
 		// 初始画
 		marker.init();
 
-		// hand data
-		var group = marker.getStyleByName('group1');
-		var circle = marker.getStyleByName('cir');
-
-		var _x = group.x;
-		var rad = circle.radius;
-
-		var cnt = 0;
-		function animate() {
-			setInterval(function () {
-				group.x = _x + Math.abs(Math.sin(cnt)) * 60;
-				circle.radius = rad + Math.abs(Math.cos(cnt)) * 30;
-				cnt += .1;
-				marker.update();
-			}, 1000 / 30);
-		}
 
 	</script>
 </body>

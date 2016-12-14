@@ -11,7 +11,7 @@ module.exports = function(grunt) {
 			},
 			domop:{
 				src: fs,
-				dest: "./build/marker.js"
+				dest: "./build/FMMarkerCanvas.js"
 			}
 		},
 
@@ -27,7 +27,15 @@ module.exports = function(grunt) {
 			},
 			doit: {
 				src: fs,
-				dest: "./build/marker.min.js",
+				dest: "./build/FMMarkerCanvas.min.js",
+			}
+		}, 
+
+		// copy
+		copy: {
+			doit: {
+				src: './build/marker/FMMarkerCanvas.js',
+				dest: '/Users/fengmap/Documents/ztc/works/fengmap/src/newapi-fengmap/marker/FMMarkerCanvas.js'
 			}
 		}
 	});

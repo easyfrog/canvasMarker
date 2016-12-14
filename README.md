@@ -3,7 +3,7 @@ Base html5 canvas to draw markers by JSON configure
 
 ``` javascript
 var imageData = {
-    width: 100,
+    width: 256,
     height: 150,
     background: {
         color: 0x00fff0,

@@ -1,5 +1,5 @@
 /**
- * Marker class
+ * FMMarkerCanvas class
  *
  * style: {
  * 		width: 256, 
@@ -87,7 +87,7 @@
  * 		]
  * }
  */
-function Marker(params) {
+function FMMarkerCanvas(params) {
 	var s = this;
 
 	s.style = {};
@@ -116,8 +116,8 @@ function Marker(params) {
 	s.ctx.canvas.height = s.style.height;
 }
 
-Marker.prototype =  {
-	constructor: Marker,
+FMMarkerCanvas.prototype =  {
+	constructor: FMMarkerCanvas,
 
 	toRgba: function (color, alpha) {
 		var r, g, b;
